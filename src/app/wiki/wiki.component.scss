@@ -1,0 +1,50 @@
+@import "./src/styles.scss";
+
+::ng-deep .mat-progress-bar-buffer {
+  background: #E4E8EB;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: $accent;
+}
+::ng-deep .mat-progress-bar {
+  height: 10px ;
+}
+
+.toolbar {
+  height: 50px;
+  background-color: white;
+
+  button {
+    margin: 6px;
+  }
+}
+
+ul {
+  list-style-type: none;
+  margin: 10px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    background: rgba(139, 165, 238, 0.2);
+    padding: 1em;
+    margin-right: 10px;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+
+    p {
+      margin: 6px 0;
+      overflow-y: auto;
+    }
+
+    a.title {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+  }
+}

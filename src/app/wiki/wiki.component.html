@@ -1,0 +1,29 @@
+<div class="toolbar">
+  <button color="accent" mat-button
+          (click)="changeMode('random')"
+          [ngClass]="{'mat-raised-button': isRandomMode, 'mat-stroked-button': !isRandomMode}">
+    Random
+  </button>
+  <button color="accent" mat-button
+          (click)="changeMode('category')"
+          [ngClass]="{'mat-stroked-button': isRandomMode, 'mat-raised-button': !isRandomMode}">
+    Category
+  </button>
+  <mat-form-field *ngIf="!isRandomMode" class="example-full-width">
+    <input color="accent" matInput [(ngModel)]="category" value="">
+  </mat-form-field>
+</div>
+
+<mat-progress-bar
+  class="example-margin"
+  [mode]="determinate"
+  [value]="progressbarValue">
+</mat-progress-bar>
+
+<ul *ngIf="pages">
+  <li *ngFor="let page of pages">
+    <a (click)="openLink(page.pageid)"
+       class="title">{{ page.title }}</a>
+    <p class="extract">{{ page.extract }}</p>
+  </li>
+</ul>
