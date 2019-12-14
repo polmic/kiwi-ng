@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="sidebar">
+    sidebar
+  </div>
+  <div class="main">
+      <form class="searchbar">
+        <mat-form-field>
+          <input matInput placeholder="Search" class="form-control" [(ngModel)]="searchText"
+                 type="text" name="searchText" id="searchText"
+                 (ngModelChange)="this.searchTextUpdate.next($event)">
+        </mat-form-field>
+      </form>
+    <div class="search-results">
+      <ul>
+        <li *ngFor="let result of results">
+          <div class="result">
+            {{result.commonName}}
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

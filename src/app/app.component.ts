@@ -12,8 +12,8 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    const navIcon = document.querySelector(".nav-icon");
-    const nav = document.querySelector("nav");
+    const navIcon: HTMLElement = <HTMLElement> document.querySelector(".nav-icon");
+    const nav: HTMLElement = document.querySelector("nav");
     navIcon.onclick = function () {
       nav.classList.toggle('show');
     }

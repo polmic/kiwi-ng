@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home/home.component'; // Add this
-import { WikiComponent } from './wiki/wiki.component'; // Add this
+import { HomeComponent } from './components/home/home.component';
+import { SearchComponent } from "./components/search/search.component";
+import { WikiComponent } from "./components/wiki/wiki.component";
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },              // Add this
-  { path: 'wiki', component: WikiComponent }           // Add this
+  { path: '', component: HomeComponent },
+  { path: 'search', component: SearchComponent },
+  { path: 'wiki', component: WikiComponent }
 ];
 
 @NgModule({

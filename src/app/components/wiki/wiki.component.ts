@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpService} from "../http.service";
+import {HttpService} from "../../services/http.service";
 
 @Component({
   selector: 'app-wiki',
@@ -23,7 +23,7 @@ export class WikiComponent implements OnInit {
   }
 
   ngOnInit() {
-    const getWiki = () => this._http.getWiki(this.isRandomMode, this.category).subscribe(data => {
+    const getWiki = () => this._http.getWiki(this.isRandomMode, this.category).subscribe((data: any) => {
       this.pages = [];
       for (let [key, value] of Object.entries(data.query.pages)) {
         this.pages.push(value);
