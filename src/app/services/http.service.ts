@@ -9,6 +9,21 @@ export class HttpService {
   constructor(private http: HttpClient) {
   }
 
+  getThumbnail(plantName: string) {
+    let url = `https://pixabay.com/api/`;
+    const params = {
+      q: plantName,
+      lang: 'fr',
+      category: 'nature',
+      image_type: 'photo',
+      per_page: 3,
+      pretty: true
+    };
+    url = url + "?key=14625960-186859b5b791695ac2c68752d";
+    Object.keys(params).forEach(key => url += "&" + key + "=" + params[key]);
+    return this.http.get(url);
+  }
+
   getWiki(isRandomMode: boolean, category: string) {
     let url = "https://en.wikipedia.org/w/api.php";
     const params = {

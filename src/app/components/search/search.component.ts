@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from "../../services/search/search.service";
-import {Subject} from "../../../../../kiwi-ns/node_modules/rxjs";
-import {debounceTime, distinctUntilChanged} from "../../../../../kiwi-ns/node_modules/rxjs/internal/operators";
-import {subscribe} from "../../../../../kiwi-ns/node_modules/kinvey-js-sdk/lib/live";
-import {element} from "protractor";
+import { Subject } from "../../../../../kiwi-ns/node_modules/rxjs";
+import { debounceTime, distinctUntilChanged } from "../../../../../kiwi-ns/node_modules/rxjs/internal/operators";
+
+import {HttpService} from "../../services/http.service";
+import {SearchService} from "../../services/search/search.service";
 
 @Component({
   selector: 'app-search',
@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
   searchTextUpdate = new Subject<string>();
   results: Array = [];
 
-  constructor(private _searchService: SearchService) {
+  constructor(private _searchService: SearchService, private _http: HttpService) {
     this.searchTextUpdate.pipe(
       debounceTime(400),
       distinctUntilChanged())
@@ -26,9 +26,16 @@ export class SearchComponent implements OnInit {
           this.results = [];
           for (let [key, value] of Object.entries(data.response)) {
             this.results.push(value);
+            this._getThumbnail(value);
           }
         });
       });
+  }
+
+  _getThumbnail(result) {
+    this._http.getThumbnail(result.commonName).subscribe((data: any) => {
+      console.log(data);
+    });
   }
 
   ngOnInit() {
