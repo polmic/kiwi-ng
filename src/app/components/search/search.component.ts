@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from "../../../../../kiwi-ns/node_modules/rxjs";
-import { debounceTime, distinctUntilChanged } from "../../../../../kiwi-ns/node_modules/rxjs/internal/operators";
+import { Subject } from "rxjs";
+import { debounceTime, distinctUntilChanged } from "rxjs/internal/operators";
 
-import {HttpService} from "../../services/http.service";
-import {SearchService} from "../../services/search/search.service";
+import {HttpService} from "src/app/services/http.service";
+import {SearchService} from "src/app/services/search/search.service";
 
 @Component({
   selector: 'app-search',

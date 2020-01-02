@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { LifeComponent } from './components/life/life.component';
 import { SearchComponent } from './components/search/search.component';
 import { WikiComponent } from './components/wiki/wiki.component';
 
@@ -20,7 +21,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     AppComponent,
     HomeComponent,
     WikiComponent,
-    SearchComponent
+    SearchComponent,
+    LifeComponent
   ],
   imports: [
     AppRoutingModule,
