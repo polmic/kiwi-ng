@@ -12,7 +12,7 @@ export class LifeComponent implements OnInit {
     nbCol: number = 60;
 
     intervalId: number;
-    nbStepsPerSec: number = 5;
+    nbStepsPerSec: number = 1;
 
     canvasWidth = 800;
     canvasHeight = 600;
@@ -27,12 +27,11 @@ export class LifeComponent implements OnInit {
     }
 
     _runGameOfLife() {
-        this.intervalId = setInterval(() => this._refreshGrid(), this.nbStepsPerSec * 1000);
+        this.intervalId = setInterval(() => this._refreshGrid(), this.nbStepsPerSec);
     }
 
     _refreshGrid() {
-        const updatedGrid = [];
-        this._initEmptyGrid(updatedGrid);
+        const updatedGrid = JSON.parse(JSON.stringify(this.grid));
         for (let i = 0; i < this.nbRows; i++) {
             for (let j = 0; j < this.nbCol; j++) {
                 if (this._isCellEvaluable(i, j)) {
@@ -80,9 +79,21 @@ export class LifeComponent implements OnInit {
     _fillStarterGrid() {
         for (let i = 0; i < this.nbRows; i++) {
             for (let j = 0; j < this.nbCol; j++) {
-                this.grid[i][j] = Math.round(Math.random());
+                // this.grid[i][j] = Math.round(Math.random());
+                this.grid[i][j] = 0;
             }
         }
+        this._setAcorn();
+    }
+
+    _setAcorn() {
+        this.grid[40][30] = 1;
+        this.grid[41][30] = 1;
+        this.grid[41][28] = 1;
+        this.grid[43][29] = 1;
+        this.grid[44][30] = 1;
+        this.grid[45][30] = 1;
+        this.grid[46][30] = 1;
     }
 
     _initCanvas() {
